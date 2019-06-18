@@ -14,6 +14,10 @@ I use other extensions like
 etc. This package help you figure out what the file you are 
 actually pointing to by showing the file in the previous window.
 
+| helm-ag | helm-gtags |
+|:---:|:---:|
+|<img src="./screenshot/helm-ag-preview-demo.gif"/> | <img src="./screenshot/helm-gtags-preview-demo.gif"/>|
+
 
 ## Usage
 Add these lines to somewhere in your Emacs config.
