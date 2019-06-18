@@ -13,7 +13,7 @@ Add these lines to somewhere in your Emacs config.
 ```
 Or if you are using `use-package`.
 ```el
-(use-package 'helm-file-preview
+(use-package helm-file-preview
   :config
   (helm-file-preview-mode t))
 ```
