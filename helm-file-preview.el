@@ -7,7 +7,7 @@
 ;; Description: Preview the current helm selection.
 ;; Keyword: file helm preview select selection
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "24.4"))
+;; Package-Requires: ((emacs "24.4") (helm "2.0"))
 ;; URL: https://github.com/jcs090218/helm-file-preview
 
 ;; This file is NOT part of GNU Emacs.
@@ -31,6 +31,10 @@
 ;;
 
 ;;; Code:
+
+
+(require 'helm)
+
 
 (defgroup helm-file-preview nil
   "Preview the current helm file selection."
