@@ -30,7 +30,13 @@ Or if you are using `use-package`.
 
 
 ## Customization
-Turn off this if you want to preview the file no matter what.
+Turn off this if you want to preview the file no matter what. 
+The default behaviour is the preview action will only occurs 
+when line numbers appears in the selection. For instance, 
+using `helm-ag`, `helm-gtags` or any packages that 
+make compatible to [helm](https://github.com/emacs-helm/helm) 
+interface.
+
 ```el
 (setq helm-file-preview-only-when-line-numbers t)
 ```
