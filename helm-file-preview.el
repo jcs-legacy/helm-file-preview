@@ -107,7 +107,7 @@ ARGS : rest of the arguments."
 ;;;###autoload
 (define-minor-mode helm-file-preview-mode
   "Minor mode 'helm-file-preview-mode'."
-  :lighter " HelmPrev"
+  :lighter " HelmFilePrev"
   :group helm-file-preview
   (if helm-file-preview-mode
       (helm-file-preview--enable)
