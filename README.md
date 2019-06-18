@@ -5,6 +5,16 @@
 # helm-file-preview
 > Preview the current helm file selection.
 
+Every time uses [helm](https://github.com/emacs-helm/helm) 
+to select the file is what painful to me. Especially when 
+I use other extensions like 
+[helm-ag](https://github.com/syohex/emacs-helm-ag), 
+[helm-gtags](https://github.com/syohex/emacs-helm-gtags), 
+[dumb-jump](https://github.com/jacktasia/dumb-jump#alternatives), 
+etc. This package help you figure out what the file you are 
+actually pointing to by showing the file in the previous window.
+
+
 ## Usage
 Add these lines to somewhere in your Emacs config.
 ```el
