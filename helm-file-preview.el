@@ -118,6 +118,8 @@ ARGS : rest of the arguments."
   (when helm-file-preview-preview-only
     (dolist (fp helm-file-preview--file-list)
       (unless (string= helm-file-preview--current-select-fp fp)
+        ;; TODO: This is consider slow, should be killed the buffer
+        ;; directly with the full path!
         (find-file fp)
         (kill-buffer)))))
 
