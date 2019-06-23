@@ -60,7 +60,7 @@
 (defvar helm-file-preview--file-list '()
   "List of file the are previewing, and ready to be killed again.")
 
-(defvar helm-file-preview--current-select-fn ""
+(defvar helm-file-preview--current-select-fp ""
   "Record current selecting filename.")
 
 
@@ -88,9 +88,9 @@ ARGS : rest of the arguments."
             (select-window helm-file-preview--prev-window)
 
             (when helm-file-preview-preview-only
-              (setq helm-file-preview--current-select-fn fn)
+              (setq helm-file-preview--current-select-fp fp)
               (unless (get-buffer fn)
-                (push fn helm-file-preview--file-list)))
+                (push fp helm-file-preview--file-list)))
 
             (find-file fp)
             (setq did-find-file t))
@@ -111,14 +111,15 @@ ARGS : rest of the arguments."
   "Record all necessary info for `helm-file-preview' package to work."
   (setq helm-file-preview--prev-window (selected-window))
   (setq helm-file-preview--file-list '())
-  (setq helm-file-preview--current-select-fn ""))
+  (setq helm-file-preview--current-select-fp ""))
 
 (defun helm-file-preview--helm-exit-minibuffer-hook ()
   "Cleanup and kill preview files."
   (when helm-file-preview-preview-only
-    (dolist (fn helm-file-preview--file-list)
-      (unless (string= helm-file-preview--current-select-fn fn)
-        (kill-buffer fn)))))
+    (dolist (fp helm-file-preview--file-list)
+      (unless (string= helm-file-preview--current-select-fp fp)
+        (find-file fp)
+        (kill-buffer)))))
 
 (defun helm-file-preview--enable ()
   "Enable `helm-file-preview'."
