@@ -113,7 +113,7 @@ ARGS : rest of the arguments."
   (setq helm-file-preview--file-list '())
   (setq helm-file-preview--current-select-fp ""))
 
-(defun helm-file-preview--helm-exit-minibuffer-hook ()
+(defun helm-file-preview--helm-cleanup-hook ()
   "Cleanup and kill preview files."
   (when helm-file-preview-preview-only
     (dolist (fp helm-file-preview--file-list)
@@ -121,17 +121,19 @@ ARGS : rest of the arguments."
         (find-file fp)
         (kill-buffer)))))
 
+
 (defun helm-file-preview--enable ()
   "Enable `helm-file-preview'."
   (add-hook 'helm-before-initialize-hook #'helm-file-preview--helm-before-initialize-hook)
-  (add-hook 'helm-exit-minibuffer-hook #'helm-file-preview--helm-exit-minibuffer-hook)
+  (add-hook 'helm-cleanup-hook #'helm-file-preview--helm-cleanup-hook)
   (advice-add 'helm-mark-current-line :after 'helm-file-preview--helm-move-selection-after-hook))
 
 (defun helm-file-preview--disable ()
   "Disable `helm-file-preview'."
   (remove-hook 'helm-before-initialize-hook #'helm-file-preview--helm-before-initialize-hook)
-  (remove-hook 'helm-exit-minibuffer-hook #'helm-file-preview--helm-exit-minibuffer-hook)
+  (remove-hook 'helm-cleanup-hook #'helm-file-preview--helm-cleanup-hook)
   (advice-remove 'helm-mark-current-line 'helm-file-preview--helm-move-selection-after-hook))
+
 
 ;;;###autoload
 (define-minor-mode helm-file-preview-mode
