@@ -20,6 +20,7 @@ actually pointing to by showing the file in the previous window.
 
 
 ## Usage
+
 Add these lines to somewhere in your Emacs config.
 ```el
 (require 'helm-file-preview)
@@ -34,6 +35,7 @@ Or if you are using `use-package`.
 
 
 ## Customization
+
 Turn off this if you want to preview the file no matter what. 
 The default behaviour is the preview action will only occurs 
 when line numbers appears in the selection. For instance, 
@@ -45,8 +47,17 @@ interface.
 (setq helm-file-preview-only-when-line-numbers t)
 ```
 
+If you don't want the file to be opened after viewing the file, 
+you can set this variable to `t`. If you want to leave the file 
+opened then you should set to `nil`.
+
+```el
+(setq helm-file-preview-preview-only t)
+```
+
 
 ## Contribution
+
 If you would like to contribute to this project, you may either
 clone and make pull requests to this repository. Or you can
 clone the project and establish your own branch of this tool.
