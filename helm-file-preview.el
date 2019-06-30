@@ -79,8 +79,7 @@ ARGS : rest of the arguments."
            (cl-num nil)
            (did-find-file nil)
            )
-      (when (and root
-                 (file-exists-p fp))
+      (when (file-exists-p fp)
         (save-selected-window
           (when (or (not helm-file-preview-only-when-line-numbers)
                     (and helm-file-preview-only-when-line-numbers
