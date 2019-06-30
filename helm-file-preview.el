@@ -6,7 +6,7 @@
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; Description: Preview the current helm selection.
 ;; Keyword: file helm preview select selection
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Package-Requires: ((emacs "24.4") (helm "2.0"))
 ;; URL: https://github.com/jcs090218/helm-file-preview
 
@@ -67,43 +67,44 @@
 (defun helm-file-preview--helm-move-selection-after-hook (&rest _args)
   "Helm after move selection for `helm-' related commands preview action.
 ARGS : rest of the arguments."
-  (when (and helm-file-preview--prev-window
-             (helm-get-selection))
-    (let* ((sel-lst (split-string (helm-get-selection nil t) ":"))
-           (fn (nth 0 sel-lst))   ; filename
-           (ln (nth 1 sel-lst))   ; line
-           (cl (nth 2 sel-lst))   ; column
-           (root (cdr (project-current)))
-           (fp (concat root fn))  ; file path
-           (ln-num nil)
-           (cl-num nil)
-           (did-find-file nil)
-           )
-      (when (file-exists-p fp)
-        (save-selected-window
-          (when (or (not helm-file-preview-only-when-line-numbers)
-                    (and helm-file-preview-only-when-line-numbers
-                         ln))
-            (select-window helm-file-preview--prev-window)
+  (let ((selection-str (helm-get-selection nil t)))
+    (when (and helm-file-preview--prev-window
+               selection-str)
+      (let* ((sel-lst (split-string selection-str ":"))
+             (fn (nth 0 sel-lst))   ; filename
+             (ln (nth 1 sel-lst))   ; line
+             (cl (nth 2 sel-lst))   ; column
+             (root (cdr (project-current)))
+             (fp (concat root fn))  ; file path
+             (ln-num nil)
+             (cl-num nil)
+             (did-find-file nil)
+             )
+        (when (file-exists-p fp)
+          (save-selected-window
+            (when (or (not helm-file-preview-only-when-line-numbers)
+                      (and helm-file-preview-only-when-line-numbers
+                           ln))
+              (select-window helm-file-preview--prev-window)
 
-            (when helm-file-preview-preview-only
-              (setq helm-file-preview--current-select-fp fp)
-              (unless (get-buffer fn)
-                (push fp helm-file-preview--file-list)))
+              (when helm-file-preview-preview-only
+                (setq helm-file-preview--current-select-fp fp)
+                (unless (get-buffer fn)
+                  (push fp helm-file-preview--file-list)))
 
-            (find-file fp)
-            (setq did-find-file t))
+              (find-file fp)
+              (setq did-find-file t))
 
-          (when did-find-file
-            (when ln
-              (setq ln-num (string-to-number ln))
-              (when (< 0 ln-num)
-                (goto-char (point-min))
-                (forward-line (1- ln-num))
-                (when cl
-                  (setq cl-num (string-to-number cl))
-                  (when (< 0 cl-num)
-                    (move-to-column (1- cl-num))))))))))))
+            (when did-find-file
+              (when ln
+                (setq ln-num (string-to-number ln))
+                (when (< 0 ln-num)
+                  (goto-char (point-min))
+                  (forward-line (1- ln-num))
+                  (when cl
+                    (setq cl-num (string-to-number cl))
+                    (when (< 0 cl-num)
+                      (move-to-column (1- cl-num)))))))))))))
 
 
 (defun helm-file-preview--helm-before-initialize-hook ()
