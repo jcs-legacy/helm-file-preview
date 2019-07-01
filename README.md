@@ -21,7 +21,7 @@ actually pointing to by showing the file in the previous window.
 
 Few differences to `helm-follow-mode`.
 * Decouple from `helm-source`.
-* Customize once, works across all packages that use helm's interface.
+* Customize once, works across all packages that use `helm`'s interface.
 * Preview instead of opening files.
 
 
