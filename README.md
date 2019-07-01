@@ -19,6 +19,11 @@ actually pointing to by showing the file in the previous window.
 |:---:|:---:|
 |<img src="./screenshot/helm-ag-preview-demo.gif"/> | <img src="./screenshot/helm-gtags-preview-demo.gif"/>|
 
+Few differences to `helm-follow-mode`.
+* Decouple from `source`.
+* Customize once, works across all OS.
+* Preview instead of opening files.
+
 
 ## Usage
 
