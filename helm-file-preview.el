@@ -95,7 +95,8 @@ ARGS : rest of the arguments."
 
               (when helm-file-preview-preview-only
                 (setq helm-file-preview--current-select-fb (current-buffer))
-                (push helm-file-preview--current-select-fb helm-file-preview--file-buffer-list)))
+                (push helm-file-preview--current-select-fb helm-file-preview--file-buffer-list)
+                (delete-dups helm-file-preview--file-buffer-list)))
 
             (when did-find-file
               (when ln
