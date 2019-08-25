@@ -66,7 +66,7 @@
 (defvar helm-file-preview--prev-buffer-list '()
   "Record the previous buffer list.")
 
-(defvar helm-file-preview--exiting nil
+(defvar helm-file-preview--exiting t
   "Exit flag for this minor mode.")
 
 
