@@ -6,7 +6,7 @@
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; Description: Preview the current helm selection.
 ;; Keyword: file helm preview select selection
-;; Version: 0.1.1
+;; Version: 0.1.2
 ;; Package-Requires: ((emacs "24.4") (helm "2.0"))
 ;; URL: https://github.com/jcs090218/helm-file-preview
 
