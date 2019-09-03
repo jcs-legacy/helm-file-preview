@@ -160,7 +160,9 @@ ARGS : rest of the arguments."
 (define-minor-mode helm-file-preview-mode
   "Minor mode 'helm-file-preview-mode'."
   :lighter " HelmFilePrev"
-  :group helm-file-preview
+  :global t
+  :require 'helm-file-preview
+  :group 'helm-file-preview
   (if helm-file-preview-mode
       (helm-file-preview--enable)
     (helm-file-preview--disable)))
