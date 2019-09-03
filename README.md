@@ -30,13 +30,13 @@ Few differences to `helm-follow-mode`.
 Add these lines to somewhere in your Emacs config.
 ```el
 (require 'helm-file-preview)
-(helm-file-preview-mode 1)
+(helm-file-preview-mode t)
 ```
 Or if you are using `use-package`.
 ```el
 (use-package helm-file-preview
   :config
-  (helm-file-preview-mode 1))
+  (helm-file-preview-mode t))
 ```
 
 
