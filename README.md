@@ -3,7 +3,6 @@
 [![MELPA Stable](https://stable.melpa.org/packages/helm-file-preview-badge.svg)](https://stable.melpa.org/#/helm-file-preview)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-
 # helm-file-preview
 > Preview the current helm file selection.
 
@@ -18,13 +17,12 @@ actually pointing to by showing the file in the previous window.
 
 | helm-ag | helm-gtags |
 |:---:|:---:|
-|<img src="./screenshot/helm-ag-preview-demo.gif"/> | <img src="./screenshot/helm-gtags-preview-demo.gif"/>|
+|<img src="./etc/helm-ag-preview-demo.gif"/> | <img src="./etc/helm-gtags-preview-demo.gif"/>|
 
 Few differences to `helm-follow-mode`.
 * Decouple from `helm-source`.
 * Customize once, works across all packages that use `helm`'s interface.
 * Preview instead of opening files.
-
 
 ## Usage
 
@@ -39,7 +37,6 @@ Or if you are using `use-package`.
   :config
   (helm-file-preview-mode 1))
 ```
-
 
 ## Customization
 
@@ -61,7 +58,6 @@ opened then you should set to `nil`.
 ```el
 (setq helm-file-preview-preview-only t)
 ```
-
 
 ## Contribution
 
