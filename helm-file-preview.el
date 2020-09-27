@@ -8,7 +8,7 @@
 ;; Keyword: file helm preview select selection
 ;; Version: 0.1.4
 ;; Package-Requires: ((emacs "25.1") (helm "2.0"))
-;; URL: https://github.com/jcs090218/helm-file-preview
+;; URL: https://github.com/jcs-elpa/helm-file-preview
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -39,7 +39,7 @@
   "Preview the current helm file selection."
   :prefix "helm-file-preview-"
   :group 'tools
-  :link '(url-link :tag "Repository" "https://github.com/jcs090218/helm-file-preview"))
+  :link '(url-link :tag "Repository" "https://github.com/jcs-elpa/helm-file-preview"))
 
 (defcustom helm-file-preview-only-when-line-numbers t
   "Find the file only when the line numbers appears in the selection."
