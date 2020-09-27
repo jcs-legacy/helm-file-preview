@@ -1,4 +1,4 @@
-;;; helm-file-preview.el --- Preview the current helm file selection.  -*- lexical-binding: t; -*-
+;;; helm-file-preview.el --- Preview the current helm file selection  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2019  Shen, Jen-Chieh
 ;; Created date 2019-06-18 14:03:53
@@ -7,7 +7,7 @@
 ;; Description: Preview the current helm selection.
 ;; Keyword: file helm preview select selection
 ;; Version: 0.1.4
-;; Package-Requires: ((emacs "24.4") (helm "2.0"))
+;; Package-Requires: ((emacs "25.1") (helm "2.0"))
 ;; URL: https://github.com/jcs090218/helm-file-preview
 
 ;; This file is NOT part of GNU Emacs.
@@ -35,13 +35,11 @@
 
 (require 'helm)
 
-
 (defgroup helm-file-preview nil
   "Preview the current helm file selection."
   :prefix "helm-file-preview-"
   :group 'tools
   :link '(url-link :tag "Repository" "https://github.com/jcs090218/helm-file-preview"))
-
 
 (defcustom helm-file-preview-only-when-line-numbers t
   "Find the file only when the line numbers appears in the selection."
@@ -52,7 +50,6 @@
   "Preview the file instead of actually opens the file."
   :type 'boolean
   :group 'helm-file-preview)
-
 
 (defvar helm-file-preview--prev-window nil
   "Record down the previous window before we do `helm-' related commands.")
@@ -69,14 +66,14 @@
 (defvar helm-file-preview--exiting t
   "Exit flag for this minor mode.")
 
+;;; Core
 
 (defun helm-file-preview--do-preview (fp ln cl)
   "Do preview with filepath (FP), line number (LN), column (CL)."
-  (let ((did-find-file nil))
+  (let (did-find-file)
     (save-selected-window
       (when (or (not helm-file-preview-only-when-line-numbers)
-                (and helm-file-preview-only-when-line-numbers
-                     ln))
+                (and helm-file-preview-only-when-line-numbers ln))
         (select-window helm-file-preview--prev-window)
 
         (find-file fp)
@@ -88,8 +85,7 @@
           (delete-dups helm-file-preview--file-buffer-list)))
 
       (when did-find-file
-        (let ((ln-num nil)
-              (cl-num nil))
+        (let (ln-num cl-num)
           (when ln
             (setq ln-num (string-to-number ln))
             (when (< 0 ln-num)
@@ -119,7 +115,6 @@ ARGS : rest of the arguments."
         (when (file-exists-p fp)
           (helm-file-preview--do-preview fp ln cl))))))
 
-
 (defun helm-file-preview--opened-buffer (in-list in-buf)
   "Check if the IN-BUF in the opened buffer list, IN-LIST."
   (cl-some #'(lambda (buf) (equal buf in-buf)) in-list))
@@ -147,6 +142,7 @@ ARGS : rest of the arguments."
   (setq helm-file-preview--current-select-fb nil)
   (helm-file-preview--cleanup))
 
+;;; Entry
 
 (defun helm-file-preview--enable ()
   "Enable `helm-file-preview'."
@@ -162,17 +158,13 @@ ARGS : rest of the arguments."
   (remove-hook 'minibuffer-exit-hook #'helm-file-preview--exit)
   (advice-remove 'helm-mark-current-line 'helm-file-preview--helm-move-selection-after-hook))
 
-
 ;;;###autoload
 (define-minor-mode helm-file-preview-mode
   "Minor mode 'helm-file-preview-mode'."
   :global t
   :require 'helm-file-preview
   :group 'helm-file-preview
-  (if helm-file-preview-mode
-      (helm-file-preview--enable)
-    (helm-file-preview--disable)))
-
+  (if helm-file-preview-mode (helm-file-preview--enable) (helm-file-preview--disable)))
 
 (provide 'helm-file-preview)
 ;;; helm-file-preview.el ends here
