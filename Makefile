@@ -7,14 +7,14 @@ PKG-FILES := helm-file-preview.el
 
 TEST-FILES := $(shell ls test/helm-file-preview-*.el)
 
-.PHONY: clean checkdoc lint unix-build unix-compile	unix-test
+.PHONY: clean checkdoc lint build compile unix-test
 
-unix-ci: clean unix-build unix-compile
+ci: clean build compile
 
-unix-build:
+build:
 	$(CASK) install
 
-unix-compile:
+compile:
 	@echo "Compiling..."
 	@$(CASK) $(EMACS) -Q --batch \
 		-L . \
