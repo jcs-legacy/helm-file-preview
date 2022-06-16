@@ -4,11 +4,10 @@
 ;; Created date 2019-06-18 14:03:53
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
-;; Description: Preview the current helm selection.
-;; Keyword: file helm preview select selection
+;; URL: https://github.com/jcs-elpa/helm-file-preview
 ;; Version: 0.1.5
 ;; Package-Requires: ((emacs "25.1") (helm "2.0"))
-;; URL: https://github.com/jcs-elpa/helm-file-preview
+;; Keywords: file helm preview select selection
 
 ;; This file is NOT part of GNU Emacs.
 

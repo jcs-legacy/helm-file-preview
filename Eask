@@ -2,9 +2,12 @@
          "0.1.5"
          "Preview the current helm file selection")
 
-(source "melpa")
+(website-url "https://github.com/jcs-elpa/helm-file-preview")
+(keywords "file" "helm" "preview" "select" "selection")
 
 (package-file "helm-file-preview.el")
+
+(source "melpa")
 
 (depends-on "emacs" "25.1")
 (depends-on "helm")
