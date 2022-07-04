@@ -7,7 +7,7 @@
 ;; URL: https://github.com/jcs-elpa/helm-file-preview
 ;; Version: 0.1.5
 ;; Package-Requires: ((emacs "25.1") (helm "2.0"))
-;; Keywords: file helm preview select selection
+;; Keywords: convenience file helm preview select selection
 
 ;; This file is NOT part of GNU Emacs.
 
