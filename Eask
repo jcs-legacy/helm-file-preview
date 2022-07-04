@@ -3,7 +3,7 @@
          "Preview the current helm file selection")
 
 (website-url "https://github.com/jcs-elpa/helm-file-preview")
-(keywords "file" "helm" "preview" "select" "selection")
+(keywords "convenience" "file" "helm" "preview" "select" "selection")
 
 (package-file "helm-file-preview.el")
 
