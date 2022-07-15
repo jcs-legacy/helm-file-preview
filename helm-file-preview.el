@@ -67,6 +67,11 @@
 
 ;;; Core
 
+(declare-function project-root "project" (project))
+(when (version< emacs-version "28.0.90")
+  (defun project-root (project)
+    (cdr project)))
+
 (defun helm-file-preview--do-preview (fp ln cl)
   "Do preview with filepath (FP), line number (LN), column (CL)."
   (let (did-find-file)
