@@ -105,7 +105,7 @@ ARGS : rest of the arguments."
              (fn (nth 0 sel-lst))   ; filename
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
-             (root (cdr (project-current)))
+             (root (project-root (project-current)))
              (fp (concat root fn))  ; file path
              )
         ;; NOTE: Try expand file, if the file not found relative to
