@@ -164,7 +164,7 @@ ARGS : rest of the arguments."
 
 ;;;###autoload
 (define-minor-mode helm-file-preview-mode
-  "Minor mode 'helm-file-preview-mode'."
+  "Minor mode `helm-file-preview-mode'."
   :global t
   :require 'helm-file-preview
   :group 'helm-file-preview
