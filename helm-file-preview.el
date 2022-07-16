@@ -67,6 +67,11 @@
 
 ;;; Core
 
+(declare-function project-root "project" (project))
+(when (version< emacs-version "28.0.90")
+  (defun project-root (project)
+    (cdr project)))
+
 (defun helm-file-preview--do-preview (fp ln cl)
   "Do preview with filepath (FP), line number (LN), column (CL)."
   (let (did-find-file)
@@ -105,7 +110,7 @@ ARGS : rest of the arguments."
              (fn (nth 0 sel-lst))   ; filename
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
-             (root (cdr (project-current)))
+             (root (project-root (project-current)))
              (fp (concat root fn))  ; file path
              )
         ;; NOTE: Try expand file, if the file not found relative to
@@ -159,7 +164,7 @@ ARGS : rest of the arguments."
 
 ;;;###autoload
 (define-minor-mode helm-file-preview-mode
-  "Minor mode 'helm-file-preview-mode'."
+  "Minor mode `helm-file-preview-mode'."
   :global t
   :require 'helm-file-preview
   :group 'helm-file-preview
