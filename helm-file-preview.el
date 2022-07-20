@@ -31,6 +31,7 @@
 
 ;;; Code:
 
+(require 'project)
 
 (require 'helm)
 
@@ -65,12 +66,11 @@
 (defvar helm-file-preview--exiting t
   "Exit flag for this minor mode.")
 
-;;; Core
+;;; Externals
 
 (declare-function project-root "project" (project))
-(when (version< emacs-version "28.0.90")
-  (defun project-root (project)
-    (cdr project)))
+
+;;; Core
 
 (defun helm-file-preview--do-preview (fp ln cl)
   "Do preview with filepath (FP), line number (LN), column (CL)."
@@ -110,7 +110,9 @@ ARGS : rest of the arguments."
              (fn (nth 0 sel-lst))   ; filename
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
-             (root (project-root (project-current)))
+             (root (if (fboundp #'project-root)
+                       (ignore-errors (project-root (project-current)))
+                     (cdr (project-current))))
              (fp (concat root fn))  ; file path
              )
         ;; NOTE: Try expand file, if the file not found relative to
