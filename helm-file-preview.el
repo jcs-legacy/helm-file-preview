@@ -31,6 +31,7 @@
 
 ;;; Code:
 
+(require 'project)
 
 (require 'helm)
 
@@ -105,7 +106,7 @@ ARGS : rest of the arguments."
              (fn (nth 0 sel-lst))   ; filename
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
-             (root (if (version< "28.1" emacs-version)
+             (root (if (fboundp #'project-root)
                        (project-root (project-current)))
                    (cdr (project-current)))
              (fp (concat root fn))  ; file path
