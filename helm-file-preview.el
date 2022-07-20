@@ -66,6 +66,10 @@
 (defvar helm-file-preview--exiting t
   "Exit flag for this minor mode.")
 
+;;; Externals
+
+(declare-function project-root "project" (project))
+
 ;;; Core
 
 (defun helm-file-preview--do-preview (fp ln cl)
@@ -107,8 +111,8 @@ ARGS : rest of the arguments."
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
              (root (if (fboundp #'project-root)
-                       (project-root (project-current)))
-                   (cdr (project-current)))
+                       (project-root (project-current))
+                     (cdr (project-current))))
              (fp (concat root fn))  ; file path
              )
         ;; NOTE: Try expand file, if the file not found relative to
