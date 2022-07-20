@@ -111,7 +111,7 @@ ARGS : rest of the arguments."
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
              (root (if (fboundp #'project-root)
-                       (project-root (project-current))
+                       (ignore-errors (project-root (project-current)))
                      (cdr (project-current))))
              (fp (concat root fn))  ; file path
              )
