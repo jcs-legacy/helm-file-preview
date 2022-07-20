@@ -67,11 +67,6 @@
 
 ;;; Core
 
-(declare-function project-root "project" (project))
-(when (version< emacs-version "28.0.90")
-  (defun project-root (project)
-    (cdr project)))
-
 (defun helm-file-preview--do-preview (fp ln cl)
   "Do preview with filepath (FP), line number (LN), column (CL)."
   (let (did-find-file)
@@ -110,7 +105,9 @@ ARGS : rest of the arguments."
              (fn (nth 0 sel-lst))   ; filename
              (ln (nth 1 sel-lst))   ; line
              (cl (nth 2 sel-lst))   ; column
-             (root (project-root (project-current)))
+             (root (if (version< "28.1" emacs-version)
+                       (project-root (project-current)))
+                   (cdr (project-current)))
              (fp (concat root fn))  ; file path
              )
         ;; NOTE: Try expand file, if the file not found relative to
