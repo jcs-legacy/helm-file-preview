@@ -9,7 +9,7 @@
 # helm-file-preview
 > Preview the current helm file selection.
 
-[![CI](https://github.com/jcs-elpa/helm-file-preview/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-elpa/helm-file-preview/actions/workflows/test.yml)
+[![CI](https://github.com/jcs-legacy/helm-file-preview/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-legacy/helm-file-preview/actions/workflows/test.yml)
 
 Every time uses [helm](https://github.com/emacs-helm/helm) 
 to select the file is what painful to me. Especially when 
